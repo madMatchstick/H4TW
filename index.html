@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Health For the World</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="//api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js"></script>
+    <link href="//api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//code.getmdl.io/1.1.3/material.lime-teal.min.css">
+    <script defer src="//code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="fixed-drawer.css">
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-66511604-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+        <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; height: calc(100vh); width: calc(100vw - 320px); }
+        .trend {stroke-width: 4;stroke-opacity:.12;fill:none;}
+        .tick line {stroke: rgba(0, 0, 0, 0.1);stroke-dasharray:2;}
+        @media only screen and (max-width: 1024px) {
+          #map {width: 100vw;}
+        }
+        </style>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer mdl-color-text--grey-60 mdl-shadow--2dp">
+      <h4 style="padding:0 1rem; text-align:center; margin-bottom: 0.3;">Health for the World</h4>
+      <h5 style="padding:0 1rem; text-align:center; margin-top:0;" >PPE Finder Tool</h5>
+      <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
+      
+
+<!-- ******************************************************************************************************************** -->  
+  <!--MAP CANVAS MENU-->  
+<!-- ******************************************************************************************************************** -->  
+
+      <li>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">map</i>Map Canvas</div>
+          <div class="collapsible-body white">
+            <div id="menu" class="demo-toggles">
+
+              <p class="narrow">
+                  <input name="group1" type="radio" id="lightCanvas" value="cjaw9t1bs9ca42spvoe4jjloj" checked/>
+                  <label for="lightCanvas">Light</label>
+              </p>
+              <p class="narrow">
+                  <input name="group1" type="radio" id="Satellite" value="cjawjbu6s0mzh2rmwcivbi175"/>
+                  <label for="Satellite">Satellite</label> 
+              </p>
+
+               <p class="narrow">
+                  <input name="group1" type="radio" id="outdoors" value="cj69pbt4b2i202sldemnjtkos"/> 
+                  <label for="outdoors">Outdoors</label> 
+              </p>
+            </div>
+          </div>
+      </li>
+
+
+      <li>
+        <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Africa</div>
+        <div class="collapsible-body white" id= 'layers_africa'>
+
+        <p class="note grey-text">PPE Suppliers</p>
+
+
+
+        <span style="display: inline-block;text-align:left">
+              <a href = "#!" id = "zoom_africa" > 
+                  <p class="blue-grey-text valign left" style="margin-top:0px; margin-bottom: 10px; ">
+                  <i style="vertical-align: text-bottom;" class = "material-icons left valign blue-grey-text">zoom_in</i><b>Quick Zoom</b> 
+                  </p>   
+             </a> 
+        </span>
+
+                               <p>
+                                  <input name= "ppe_africa" type="checkbox" id="ppe_africa" class="layer-off" onclick="toggleLayer('ppe_africa')" />
+                                  <label for="ppe_africa"  class="valign">All PPE</label>
+                                </p>          
+<!--    
+                                  <p>
+                                  <input name= "mask_asia" type="checkbox" id="mask_asia" class="layer-off" onclick="toggleLayer('mask_asia')" />
+                                  <label for="mask_asia"  class="valign">Masks</label>
+                                </p>
+ -->
+
+      </div>
+      </li>
+
+            
+      <li>
+        <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Asia</div>
+        <div class="collapsible-body white" id= 'layers_asia'>
+
+        <p class="note grey-text">PPE Suppliers</p>
+
+
+
+        <span style="display: inline-block;text-align:left">
+              <a href = "#!" id = "zoom_asia" > 
+                  <p class="blue-grey-text valign left" style="margin-top:0px; margin-bottom: 10px; ">
+                  <i style="vertical-align: text-bottom;" class = "material-icons left valign blue-grey-text">zoom_in</i><b>Quick Zoom</b> 
+                  </p>   
+             </a> 
+        </span>
+
+                               <p>
+                                  <input name= "ppe_asia" type="checkbox" id="ppe_asia" class="layer-off" onclick="toggleLayer('ppe_asia')" />
+                                  <label for="ppe_asia"  class="valign">All PPE</label>
+                                </p>          
+<!--    
+                                  <p>
+                                  <input name= "mask_asia" type="checkbox" id="mask_asia" class="layer-off" onclick="toggleLayer('mask_asia')" />
+                                  <label for="mask_asia"  class="valign">Masks</label>
+                                </p>
+ -->
+
+
+
+      </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>South America</div>
+        <div class="collapsible-body white" id= 'layers_samerica'>
+
+        <p class="note grey-text">PPE Suppliers</p>
+
+
+
+        <span style="display: inline-block;text-align:left">
+              <a href = "#!" id = "zoom_samerica" > 
+                  <p class="blue-grey-text valign left" style="margin-top:0px; margin-bottom: 10px; ">
+                  <i style="vertical-align: text-bottom;" class = "material-icons left valign blue-grey-text">zoom_in</i><b>Quick Zoom</b> 
+                  </p>   
+             </a> 
+        </span>
+
+                               <p>
+                                  <input name= "ppe_samerica" type="checkbox" id="ppe_samerica" class="layer-off" onclick="toggleLayer('ppe_samerica')" />
+                                  <label for="ppe_samerica"  class="valign">All PPE</label>
+                                </p>          
+   
+<!--                                   <p>
+                                  <input name= "mask_asia" type="checkbox" id="mask_asia" class="layer-off" onclick="toggleLayer('mask_usa')" />
+                                  <label for="mask_usa"  class="valign">Masks</label>
+                                </p>
+
+ -->
+
+
+
+      </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>USA</div>
+        <div class="collapsible-body white" id= 'layers_usa'>
+
+        <p class="note grey-text">PPE Suppliers</p>
+
+
+
+        <span style="display: inline-block;text-align:left">
+              <a href = "#!" id = "zoom_usa" > 
+                  <p class="blue-grey-text valign left" style="margin-top:0px; margin-bottom: 10px; ">
+                  <i style="vertical-align: text-bottom;" class = "material-icons left valign blue-grey-text">zoom_in</i><b>Quick Zoom</b> 
+                  </p>   
+             </a> 
+        </span>
+
+                               <p>
+                                  <input name= "ppe_usa" type="checkbox" id="ppe_usa" class="layer-off" onclick="toggleLayer('ppe_usa')" />
+                                  <label for="ppe_usa"  class="valign">All PPE</label>
+                                </p>          
+   
+<!--                                   <p>
+                                  <input name= "mask_asia" type="checkbox" id="mask_asia" class="layer-off" onclick="toggleLayer('mask_usa')" />
+                                  <label for="mask_usa"  class="valign">Masks</label>
+                                </p>
+
+ -->
+
+
+
+      </div>
+      </li>
+
+
+<!-- ******************************************************************************************************************** -->    
+   <!--legend-->
+<!-- ******************************************************************************************************************** -->   
+      
+      <li>
+        <div class="collapsible-header indigo-alt">Legend<i class="material-icons right">keyboard_arrow_down</i></div>
+        <div class="collapsible-body white">
+          <ul class="collection with-header grey-text text-darken-2">
+            
+   
+              <li class="collection-item grey-text"><div>PPE General Supplier<a href="#!" class="secondary-content"><svg height="21" width="21"><circle cx="10.5" cy="10.5" r="7.5" fill="#FF0000" /></svg></a></div></li>
+
+              <li class="collection-item grey-text"><div>Mask<a href="#!" class="secondary-content"><svg height="21" width="21"><circle cx="10.5" cy="10.5" r="7.5" fill="#00FFC5" /></svg></a></div></li>
+
+
+          </ul>
+        </div>
+      </li> 
+      <!--end legend list-->
+
+          <div class="mdl-grid">
+              <a id="clear" class="waves-light btn">Clear All</a>
+          </div>
+
+
+    </ul>
+
+
+  
+  </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div id="map"></div>
+      </div>
+    </main>
+</div>
+
+
+
+<!--end main index-->
+
+
+<div id='map'></div>
+
+<script src='ppe.js'></script>
+<script src="toggleLayer.js"></script>
+
+
+</body>
+</html>
