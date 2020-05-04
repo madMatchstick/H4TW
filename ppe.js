@@ -42,22 +42,22 @@ map.on('style.load', function () {
      
      map.addSource('ppe_usa', {
         type: 'vector',
-        url: 'mapbox://jlgred88.a8s2fsrs'    //H4TW_PPE_USA-2sys14  -122.3,29.7,-72.7,41.6
+        url: 'mapbox://jlgred88.32y92dnh'    //H4TW_PPE_USA_20200504-cqumxf  -122.3,29.7,-72.7,41.6
     });
     
      map.addSource('ppe_asia', {
         type: 'vector',
-        url: 'mapbox://jlgred88.1nrm5j5w'    //H4TW_PPE_ASIA2-04m6bw  79.0,-33.7,151.0,35.8
+        url: 'mapbox://jlgred88.a39royfg'    //H4TW_PPE_ASIA_20200504-dqav4l  79.0,-33.7,151.0,35.8
     });
 
      map.addSource('ppe_africa', {
         type: 'vector',
-        url: 'mapbox://jlgred88.2hmwio7l'    //H4TW_PPE_AFRICA-8qx4id   -1.8,-26.0,38.8,9.0
+        url: 'mapbox://jlgred88.0mgwj3rl'    //H4TW_PPE_AFRICA_20200504-dwcxm4  -7.6,-26.2,57.4,35.7
     });
 
      map.addSource('ppe_samerica', {
         type: 'vector',
-        url: 'mapbox://jlgred88.1fesw15b'    //H4TW_PPE_SOUTHAMERICA-8jity2   -102.6,-38.4,-63.6,23.6
+        url: 'mapbox://jlgred88.7j7x4mrb'    //H4TW_PPE_SOUTHAMERICA_2020050-6pl93y   -100.3,-34.9,-46.6,20.6
     });
 
 /*
@@ -78,7 +78,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ppe_usa',
       'source': 'ppe_usa',
-      'source-layer': 'H4TW_PPE_USA-2sys14',
+      'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
       //'filter': ["all",["==", 'type', 'inflow'],["==", 'Name', 'Colfax Central']],
       'layout': {
         'visibility': 'none'
@@ -99,7 +99,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ppe_asia',
       'source': 'ppe_asia',
-      'source-layer': 'H4TW_PPE_ASIA2-04m6bw',
+      'source-layer': 'H4TW_PPE_ASIA_20200504-dqav4l',
       'layout': {
         'visibility': 'none'
       },
@@ -119,7 +119,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ppe_africa',
       'source': 'ppe_africa',
-      'source-layer': 'H4TW_PPE_AFRICA-8qx4id',
+      'source-layer': 'H4TW_PPE_AFRICA_20200504-dwcxm4',
       'layout': {
         'visibility': 'none'
       },
@@ -139,7 +139,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ppe_samerica',
       'source': 'ppe_samerica',
-      'source-layer': 'H4TW_PPE_SOUTHAMERICA-8jity2',
+      'source-layer': 'H4TW_PPE_SOUTHAMERICA_2020050-6pl93y',
       'layout': {
         'visibility': 'none'
       },
@@ -188,7 +188,7 @@ map.on('style.load', function () {
       if (id == 'ppe_africa'){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<b>'+'Email: ' + '</b>' + feature.properties.Email)
+            .setHTML('<b>'+'Email: ' + '</b>' + feature.properties.email)
             .addTo(map);
       }
 /*
@@ -197,14 +197,18 @@ map.on('style.load', function () {
             .setLngLat(e.lngLat)
             .setHTML('<b>'+'Company: ' + '</b>' + feature.properties.What company do you represent? )
             .addTo(map);
-      }
+      } */
 
       if (id == 'ppe_usa'){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<b>'+'Company: ' + '</b>' + feature.properties.Company Name )
+            .setHTML(
+              '<b>' + feature.properties.name + '</b> <br/>' +
+              '<b>'+ 'Email: ' + '</b>' + feature.properties.email + '</b> <br/>' +
+              '<b>'+ 'Ph: ' + '</b>' + feature.properties.phone_number + '</b> <br/>' +
+              '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
             .addTo(map);
-      }*/
+      }
           });
 
 
@@ -235,28 +239,28 @@ $(document).ready(function() {
 
 document.getElementById('zoom_asia').addEventListener('click', function() {
 
-  var bbox = [[79.0,-33.7], [151.0,35.8]];
+  var bbox = [[79.0,-33.7], [151.0,35.8]]; 
   map.fitBounds(bbox, { padding:2 }); 
 
 });
 
-document.getElementById('zoom_usa').addEventListener('click', function() {
+document.getElementById('zoom_usa').addEventListener('click', function() { 
 
   var bbox = [[-122.3,29.7], [-72.7,41.6]];
   map.fitBounds(bbox, { padding:2 });
 
 });
 
-document.getElementById('zoom_africa').addEventListener('click', function() {
+document.getElementById('zoom_africa').addEventListener('click', function() { 
 
-  var bbox = [[-1.8,-26.0], [38.8,9.0]];
+  var bbox = [[-7.6,-26.2], [57.4,35.7]];
   map.fitBounds(bbox, { padding:2 }); 
 
 });
 
 document.getElementById('zoom_samerica').addEventListener('click', function() {
 
-  var bbox = [[-102.6,-38.4], [-63.6,23.6]];
+  var bbox = [[-100.3,-34.9], [-46.6,20.6]];
   map.fitBounds(bbox, { padding:2 });
 
 });
