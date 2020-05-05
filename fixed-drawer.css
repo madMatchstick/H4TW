@@ -3,15 +3,15 @@ html, body, .mapboxgl-map {
 }
 
 .link, .collapsible-header {
-color: #4E425C;
+color: #4EA594; 
 transition: all 0.2s linear;
 }
 .link:hover, .link:focus {
-color: #70637F;
+color: #71ab9f;
 }
 
 .btn, .indigo-alt {
-  background-color: #4E425C; 
+  background-color: #4EA594; 
 }
 
 .green-grey {
@@ -19,14 +19,12 @@ color: #70637F;
 }
 
 .btn:hover, .btn:focus, .collapsible-header:hover, .collapsible-header:focus, .collapsible-header.active {
-  background-color: #70637F;
+  background-color: #71ab9f;
 }
 
 
 .mdl-layout__drawer {
   width: 320px !important;
-  background-image: url("paper_texture.png")
-   !important;
 }
 
 .mdl-layout__content {
@@ -47,13 +45,13 @@ color: #70637F;
 }
 
 [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after, [type="checkbox"].filled-in:checked+label:after {
-  background-color: #4E425C;
-  border: 2px solid #4E425C;
+  background-color: #4EA594;
+  border: 2px solid #4EA594;
 }
 
 [type="checkbox"]:checked+label:before {
-  border-right-color: #4E425C;
-  border-bottom-color: #4E425C;
+  border-right-color: #4EA594;
+  border-bottom-color: #4EA594;
 }
 
 [type="checkbox"]+label, [type="radio"]+label {

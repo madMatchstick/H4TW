@@ -173,31 +173,17 @@ map.on('style.load', function () {
       var feature = featureList[0];
       var id = feature.layer.id;
 
-
-/*      if (id == 'ppe_samerica'){
+      if ((id == 'ppe_africa')||(id == 'ppe_asia')||(id == 'ppe_samerica')){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(
-              '<b>' + feature.properties.Company Name + '</b> <br/>' +
-              '<b>'+ 'Email: ' + '</b>' + feature.properties.Email + '</b> <br/>' +
-              '<b>'+ 'Ph: ' + '</b>' + feature.properties.Phone number + '</b> <br/>' +
-              '<b>'+ 'PoC: ' + '</b>' + feature.properties.Person of contact )
-            .addTo(map);
-      }*/
-
-      if (id == 'ppe_africa'){
-        var popup = new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML('<b>'+'Email: ' + '</b>' + feature.properties.email)
+              '<b>' + feature.properties.name + '</b> <br/>' +
+              '<b>'+ 'Website: ' + '</b>' + feature.properties.website + '</b> <br/>' +
+              '<b>'+ 'Email: ' + '</b>' + feature.properties.email + '</b> <br/>' +
+              '<b>'+ 'Ph: ' + '</b>' + feature.properties.phone_number + '</b> <br/>' +
+              '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
             .addTo(map);
       }
-/*
-      if (id == 'ppe_asia'){
-        var popup = new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML('<b>'+'Company: ' + '</b>' + feature.properties.What company do you represent? )
-            .addTo(map);
-      } */
 
       if (id == 'ppe_usa'){
         var popup = new mapboxgl.Popup()
@@ -209,7 +195,7 @@ map.on('style.load', function () {
               '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
             .addTo(map);
       }
-          });
+    });
 
 
     map.on('mousemove', function (e) {
