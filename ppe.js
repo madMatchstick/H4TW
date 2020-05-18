@@ -185,11 +185,15 @@ map.on('style.load', function () {
             .addTo(map);
       }
 
+/*"<a href=" + feature.properties.Website + ">Website</a>" + '</b> <br />' +
+        <a href="https://www.linkedin.com/in/jessica-garrett-10237796/" target="blank"><i class="icon-linkedin"> </i></a>*/
+
       if (id == 'ppe_usa'){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(
               '<b>' + feature.properties.name + '</b> <br/>' +
+              '<b>'+ 'Website: ' + '</b>' + feature.properties.website + '</b> <br/>' +
               '<b>'+ 'Email: ' + '</b>' + feature.properties.email + '</b> <br/>' +
               '<b>'+ 'Ph: ' + '</b>' + feature.properties.phone_number + '</b> <br/>' +
               '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
