@@ -2,6 +2,11 @@ html, body, .mapboxgl-map {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: #4EA594;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent; }
+
 .link, .collapsible-header {
 color: #4EA594; 
 transition: all 0.2s linear;
@@ -24,11 +29,11 @@ color: #71ab9f;
 
 
 .mdl-layout__drawer {
-  width: 320px !important;
+  width: 220px !important;
 }
 
 .mdl-layout__content {
-  margin-left: 320px !important;
+  margin-left: 220px !important;
 }
 
 .is-small-screen>.mdl-layout__drawer {
@@ -74,20 +79,20 @@ color: #71ab9f;
 
 .secondary {
   color: rgba(0,0,0,.62);
-  font-size: 11px;
-  line-height: 11px;
+  font-size: 9px;
+  line-height: 9px;
 }
 
 .collapsible-header {
   color: #fafafa;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 14px;
   padding: 13px 14px;
   letter-spacing: .04em;
 }
 
 .collapsible-header i {
-  line-height: 16px;
+  line-height: 14px;
 }
 
 .collapsible-body {

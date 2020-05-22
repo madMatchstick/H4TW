@@ -79,7 +79,7 @@ map.on('style.load', function () {
       'id': 'ppe_usa',
       'source': 'ppe_usa',
       'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
-      //'filter': ["all",["==", 'type', 'inflow'],["==", 'Name', 'Colfax Central']],
+      //'filter': ["all",["==", 'type', 'inflow'],["==", 'Name', '']],
       'layout': {
         'visibility': 'none'
       },
@@ -172,32 +172,33 @@ map.on('style.load', function () {
 
       var feature = featureList[0];
       var id = feature.layer.id;
+      var name = feature.properties.name;
+      var website = feature.properties.website;
+      var email = feature.properties.email;
+      var phone = feature.properties.phone_number;
+      var poc = feature.properties.person_of_contact;
+      var html;
+
+      //build html obj
+      if (name != null) html = '<b>' + name + '</b> <br/>';
+      if (website) html += "<a target='blank' href='" + website + "'>" + website + "</a><br>";
+      if (email) html += "<a href=mailto:'" + email + "'>" + email + "</a><br>";
+      if (phone) html += "<a href=tel:'" + phone + "'>" + phone + "</a><br>";
+      if (poc) html += 'PoC: ' + poc;
+
 
       if ((id == 'ppe_africa')||(id == 'ppe_asia')||(id == 'ppe_samerica')){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(
-              '<b>' + feature.properties.name + '</b> <br/>' +
-              '<b>'+ 'Website: ' + '</b>' + feature.properties.website + '</b> <br/>' +
-              '<b>'+ 'Email: ' + '</b>' + feature.properties.email + '</b> <br/>' +
-              '<b>'+ 'Ph: ' + '</b>' + feature.properties.phone_number + '</b> <br/>' +
-              '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
+            .setHTML(html)
             .addTo(map);
       }
-
-/*"<a href=" + feature.properties.Website + ">Website</a>" + '</b> <br />' +
-        <a href="https://www.linkedin.com/in/jessica-garrett-10237796/" target="blank"><i class="icon-linkedin"> </i></a>*/
 
       if (id == 'ppe_usa'){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(
-              '<b>' + feature.properties.name + '</b> <br/>' +
-              '<b>'+ 'Website: ' + '</b>' + feature.properties.website + '</b> <br/>' +
-              '<b>'+ 'Email: ' + '</b>' + feature.properties.email + '</b> <br/>' +
-              '<b>'+ 'Ph: ' + '</b>' + feature.properties.phone_number + '</b> <br/>' +
-              '<b>'+ 'PoC: ' + '</b>' + feature.properties.person_of_contact )
-            .addTo(map);
+            .setHTML(html)
+            .addTo(map); 
       }
     });
 
