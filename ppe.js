@@ -79,7 +79,6 @@ map.on('style.load', function () {
       'id': 'ppe_usa',
       'source': 'ppe_usa',
       'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
-      //'filter': ["all",["==", 'type', 'inflow'],["==", 'Name', '']],
       'layout': {
         'visibility': 'none'
       },
@@ -89,6 +88,27 @@ map.on('style.load', function () {
                "stops": [[12, 4], [15, 8], [17, 14]]
                }, 
             "circle-color": "#FF0000",
+            'circle-stroke-color': '#eee',
+            'circle-stroke-width': {
+               "stops": [[12, 2], [15, 4], [17, 8]]
+               }, 
+      }
+  }, 'road-label-small');
+
+      map.addLayer({
+      'id': 'mask_usa',
+      'source': 'ppe_usa',
+      'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
+      'filter': ["any",["==", 'masks_n95_medical_grade', 'Yes'],["==", 'masks_n95_non_medical_grade', 'Yes'],["==", 'masks_surgical', 'Yes'],["==", 'masks_cloth', 'Yes']],
+      'layout': {
+        'visibility': 'none'
+      },
+      'type': 'circle',
+      'paint': {
+            "circle-radius":{
+               "stops": [[12, 4], [15, 8], [17, 14]]
+               }, 
+            "circle-color": "#00FFC5",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
                "stops": [[12, 2], [15, 4], [17, 8]]
@@ -165,7 +185,7 @@ map.on('style.load', function () {
 
     map.on('click', function(e) {
         
-       var featureList = map.queryRenderedFeatures(e.point, { layers: ['ppe_samerica', 'ppe_usa', 'ppe_africa', 'ppe_asia'] });
+       var featureList = map.queryRenderedFeatures(e.point, { layers: ['ppe_samerica', 'ppe_usa', 'mask_usa', 'ppe_africa', 'ppe_asia'] });
           if (!featureList.length) {
           return;
           }
@@ -194,7 +214,7 @@ map.on('style.load', function () {
             .addTo(map);
       }
 
-      if (id == 'ppe_usa'){
+      if ((id == 'ppe_usa')||(id == 'mask_usa')){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(html)
@@ -204,7 +224,7 @@ map.on('style.load', function () {
 
 
     map.on('mousemove', function (e) {
-    var featureList = map.queryRenderedFeatures(e.point, { layers: ['ppe_samerica', 'ppe_usa', 'ppe_africa', 'ppe_asia'] });
+    var featureList = map.queryRenderedFeatures(e.point, { layers: ['ppe_samerica', 'ppe_usa', 'mask_usa', 'ppe_africa', 'ppe_asia'] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
     });
 
@@ -220,6 +240,7 @@ $(document).ready(function() {
         map.setLayoutProperty('ppe_asia','visibility', 'none');
         map.setLayoutProperty('ppe_samerica','visibility', 'none');
         map.setLayoutProperty('ppe_usa','visibility', 'none');
+        map.setLayoutProperty('mask_usa','visibility', 'none');
        });
 });
 
