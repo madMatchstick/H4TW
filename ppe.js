@@ -80,7 +80,7 @@ map.on('style.load', function () {
       'source': 'ppe_usa',
       'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'type': 'circle',
       'paint': {
@@ -101,7 +101,7 @@ map.on('style.load', function () {
       'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
       'filter': ["any",["==", 'masks_n95_medical_grade', 'Yes'],["==", 'masks_n95_non_medical_grade', 'Yes'],["==", 'masks_surgical', 'Yes'],["==", 'masks_cloth', 'Yes']],
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'type': 'circle',
       'paint': {
@@ -114,14 +114,14 @@ map.on('style.load', function () {
                "stops": [[12, 2], [15, 4], [17, 8]]
                }, 
       }
-  }, 'road-label-small');
+  }, 'road-label-small', 'place-city-lg-n');
 
     map.addLayer({
       'id': 'ppe_asia',
       'source': 'ppe_asia',
       'source-layer': 'H4TW_PPE_ASIA_20200504-dqav4l',
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'type': 'circle',
       'paint': {
@@ -141,7 +141,7 @@ map.on('style.load', function () {
       'source': 'ppe_africa',
       'source-layer': 'H4TW_PPE_AFRICA_20200504-dwcxm4',
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'type': 'circle',
       'paint': {
@@ -161,7 +161,7 @@ map.on('style.load', function () {
       'source': 'ppe_samerica',
       'source-layer': 'H4TW_PPE_SOUTHAMERICA_2020050-6pl93y',
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'type': 'circle',
       'paint': {
