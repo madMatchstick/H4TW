@@ -6,9 +6,9 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/jlgred88/cjaw9t1bs9ca42spvoe4jjloj', 
 
-    zoom: 4.36,
-    //minZoom:11,
-   // maxZoom:19.5, 
+    zoom: 4,
+    minZoom: 2,
+    maxZoom: 14, 
     hash: true,
     center: [-455.870,34.476],
 });
@@ -126,12 +126,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#FF0000",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small');
