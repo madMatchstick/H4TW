@@ -85,12 +85,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#FF0000",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small');
@@ -106,12 +106,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#00FFC5",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small', 'place-city-lg-n');
@@ -146,12 +146,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#FF0000",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small');
@@ -168,12 +168,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#00FFC5",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small', 'place-city-lg-n');
@@ -188,12 +188,12 @@ map.on('style.load', function () {
       'type': 'circle',
       'paint': {
             "circle-radius":{
-               "stops": [[12, 4], [15, 8], [17, 14]]
+               "stops": [[10, 6], [15, 15], [17, 20]]
                }, 
             "circle-color": "#FF0000",
             'circle-stroke-color': '#eee',
             'circle-stroke-width': {
-               "stops": [[12, 2], [15, 4], [17, 8]]
+               "stops": [[12, 2], [15, 3], [17, 10]]
                }, 
       }
   }, 'road-label-small');
