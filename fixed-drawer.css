@@ -29,15 +29,15 @@ color: #71ab9f;
 
 
 .mdl-layout__drawer {
-  width: 220px !important;
+  width: 320px !important;
 }
 
 .mdl-layout__content {
-  margin-left: 220px !important;
+  margin-left: 320px !important;
 }
 
 .is-small-screen>.mdl-layout__drawer {
-  width: 240px !important;
+  width: 220px !important;
   left: -120px !important;
 }
 

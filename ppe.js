@@ -6,11 +6,11 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/jlgred88/cjaw9t1bs9ca42spvoe4jjloj', 
 
-    zoom: 4,
-    minZoom: 2,
+    zoom: 2.6,
+    //minZoom: 1,
     maxZoom: 14, 
     hash: true,
-    center: [-455.870,34.476],
+    center: [-455.870,40.476],
 });
 
 
