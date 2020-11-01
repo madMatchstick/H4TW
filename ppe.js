@@ -42,7 +42,7 @@ map.on('style.load', function () {
      
      map.addSource('ppe_usa', {
         type: 'vector',
-        url: 'mapbox://jlgred88.32y92dnh'    //H4TW_PPE_USA_20200504-cqumxf  -122.3,29.7,-72.7,41.6
+        url: 'mapbox://jlgred88.77vioufo'    //H4TW_PPE_USA_20201101-714296 -122.3,29.7,-72.7,43.0
     });
     
      map.addSource('ppe_asia', {
@@ -78,7 +78,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ppe_usa',
       'source': 'ppe_usa',
-      'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
+      'source-layer': 'H4TW_PPE_USA_20201101-714296',
       'layout': {
         'visibility': 'visible'
       },
@@ -98,7 +98,7 @@ map.on('style.load', function () {
       map.addLayer({
       'id': 'mask_usa',
       'source': 'ppe_usa',
-      'source-layer': 'H4TW_PPE_USA_20200504-cqumxf',
+      'source-layer': 'H4TW_PPE_USA_20201101-714296',
       'filter': ["any",["==", 'masks_n95_medical_grade', 'Yes'],["==", 'masks_n95_non_medical_grade', 'Yes'],["==", 'masks_surgical', 'Yes'],["==", 'masks_cloth', 'Yes']],
       'layout': {
         'visibility': 'visible'
@@ -281,7 +281,7 @@ document.getElementById('zoom_asia').addEventListener('click', function() {
 
 document.getElementById('zoom_usa').addEventListener('click', function() { 
 
-  var bbox = [[-122.3,29.7], [-72.7,41.6]];
+  var bbox = [[-122.3,29.7], [-72.7,43.0]];
   map.fitBounds(bbox, { padding:2 });
 
 });
